@@ -1,0 +1,13 @@
+###
+# @name 创建订单
+# @no-log
+POST localhost:7001/orders
+Content-Type: application/json
+
+{
+  "orderNo": "test_6be305093d2c",
+  "userId": "test_db7448d09d4c",
+  "commodityCode": "test_f4264b40a80f",
+  "count": 19,
+  "amount": 96.38
+}
