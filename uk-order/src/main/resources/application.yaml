@@ -1,0 +1,7 @@
+server:
+  port: 7001
+spring:
+  datasource:
+    username: uk
+    password: 123456
+    url: jdbc:mysql://localhost:3306/uk
