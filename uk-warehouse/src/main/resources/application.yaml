@@ -1,8 +1,8 @@
 server:
-  port: 7001
+  port: 7002
 spring:
   application:
-    name: uk-order
+    name: uk-warehouse
   datasource:
     username: uk
     password: 123456
@@ -15,10 +15,3 @@ spring:
         health-check-path: /my-health-check
       host: localhost
       port: 8500
-
-feign:
-  client:
-    config:
-      default:
-        connect-timeout: 5000
-        read-timeout: 5000
