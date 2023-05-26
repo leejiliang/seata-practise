@@ -19,4 +19,4 @@ https://github.com/leejiliang/seata-practise.git
 ---
 ## 架构图
 ---
-[架构图](https://image-blog-lee.oss-cn-hangzhou.aliyuncs.com/uPic/g3sT6R.jpg)
+![架构图](https://image-blog-lee.oss-cn-hangzhou.aliyuncs.com/uPic/g3sT6R.jpg)
