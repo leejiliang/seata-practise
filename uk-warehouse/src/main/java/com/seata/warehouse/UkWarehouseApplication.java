@@ -1,11 +1,10 @@
-package com.seata.order;
+package com.seata.warehouse;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,22 +14,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 @EnableDiscoveryClient
-@EnableFeignClients
-public class UkOrderApplication {
+public class UkWarehouseApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(UkOrderApplication.class, args);
+        SpringApplication.run(UkWarehouseApplication.class, args);
     }
-
 
     @GetMapping("/")
     public String helloUk() {
-        return "hello order service";
+        return "hello warehouse service";
     }
 
     @GetMapping("/my-health-check")
     public ResponseEntity<String> myCustomCheck() {
-        String message = "Testing order healh check function";
+        String message = "Testing warehouse healh check function";
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
 }

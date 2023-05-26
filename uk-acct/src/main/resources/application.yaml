@@ -1,8 +1,8 @@
 server:
-  port: 7001
+  port: 7003
 spring:
   application:
-    name: uk-order
+    name: uk-acct
   datasource:
     username: uk
     password: 123456
@@ -13,15 +13,5 @@ spring:
         instance-id: ${spring.application.name}
         health-check-interval: 5s
         health-check-path: /my-health-check
-  jpa:
-    hibernate:
-      ddl-auto: update
       host: localhost
       port: 8500
-
-feign:
-  client:
-    config:
-      default:
-        connect-timeout: 5000
-        read-timeout: 5000
