@@ -13,3 +13,6 @@ spring:
         instance-id: ${spring.application.name}
         health-check-interval: 20s
         health-check-path: /my-health-check
+  jpa:
+    hibernate:
+      ddl-auto: update
