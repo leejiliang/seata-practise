@@ -20,3 +20,15 @@ https://github.com/leejiliang/seata-practise.git
 ## 架构图
 ---
 ![架构图](https://image-blog-lee.oss-cn-hangzhou.aliyuncs.com/uPic/g3sT6R.jpg)
+
+# 相关SQL
+```sql
+## 创建schema
+create schema seata_uk default character set utf8 collate utf8_general_ci;
+## 创建用户
+DROP USER uk;
+create user uk@'%' identified by '123456';
+## 授权
+grant all on seata_uk.* to uk@'%' with grant option;
+flush privileges;
+```

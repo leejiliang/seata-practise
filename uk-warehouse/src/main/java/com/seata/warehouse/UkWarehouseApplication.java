@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
+//@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 @EnableDiscoveryClient
 public class UkWarehouseApplication {
 
@@ -27,7 +27,7 @@ public class UkWarehouseApplication {
 
     @GetMapping("/my-health-check")
     public ResponseEntity<String> myCustomCheck() {
-        String message = "Testing warehouse healh check function";
+        String message = "Testing warehouse health check function";
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
 }

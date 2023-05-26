@@ -6,7 +6,7 @@ spring:
   datasource:
     username: uk
     password: 123456
-    url: jdbc:mysql://localhost:3306/uk
+    url: jdbc:mysql://localhost:3306/seata_uk?serverTimezone=Asia/Shanghai
   cloud:
     consul:
       discovery:
@@ -15,3 +15,6 @@ spring:
         health-check-path: /my-health-check
       host: localhost
       port: 8500
+  jpa:
+    hibernate:
+      ddl-auto: update

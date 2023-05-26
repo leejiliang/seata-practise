@@ -1,0 +1,13 @@
+###
+# @name 生成订单
+# @no-log
+POST localhost:7001/orders
+Content-Type: application/json
+
+{
+  "orderNo": "123",
+  "userId": 1,
+  "commodityCode": 1001,
+  "count": 10,
+  "amount": 55
+}
