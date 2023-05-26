@@ -1,7 +1,15 @@
 server:
   port: 7001
 spring:
+  application:
+    name: uk-order
   datasource:
     username: uk
     password: 123456
     url: jdbc:mysql://localhost:3306/uk
+  cloud:
+    consul:
+      discovery:
+        instance-id: ${spring.application.name}
+        health-check-interval: 20s
+        health-check-path: /my-health-check
