@@ -9,12 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.seata.order</groupId>
-    <artifactId>uk-order</artifactId>
+    <groupId>com.seata.warehouse</groupId>
+    <artifactId>uk-warehouse</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>${project.artifactId}-${project.version}</name>
-    <description>订单服务</description>
-
+    <description>仓储服务</description>
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -33,26 +32,9 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-consul-discovery</artifactId>-->
-<!--        </dependency>-->
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
         </dependency>
 
         <dependency>
