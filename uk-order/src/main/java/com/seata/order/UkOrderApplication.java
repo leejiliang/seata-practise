@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 @EnableDiscoveryClient
 @EnableFeignClients
 public class UkOrderApplication {
@@ -30,7 +29,7 @@ public class UkOrderApplication {
 
     @GetMapping("/my-health-check")
     public ResponseEntity<String> myCustomCheck() {
-        String message = "Testing order healh check function";
+        String message = "Testing order health check function";
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
 }

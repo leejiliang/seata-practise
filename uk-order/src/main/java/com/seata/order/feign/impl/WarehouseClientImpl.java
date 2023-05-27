@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
  * @description:
  */
 
-@Component
 public class WarehouseClientImpl implements WarehouseClient {
     @Override
     public String index() {

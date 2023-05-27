@@ -6,7 +6,7 @@ spring:
   datasource:
     username: uk
     password: 123456
-    url: jdbc:mysql://localhost:3306/uk
+    url: jdbc:mysql://localhost:3306/seata_uk?serverTimezone=Asia/Shanghai
   cloud:
     consul:
       discovery:
@@ -16,8 +16,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-      host: localhost
-      port: 8500
 
 feign:
   client:
