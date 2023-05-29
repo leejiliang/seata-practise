@@ -1,9 +1,14 @@
 # seata-practise
 seata 学习项目
 # TODO list
-1. [ ] 替换服务发现组件为nacos
-2. [ ] 使用组件seata, 测试AT模式
+1. [x] 替换服务发现组件为nacos
+2. [x] 使用组件seata, 测试AT模式
 3. [ ] 引入分库分表, 测试AT模式
+4. [ ] 引入分布式事务, 测试XA模式
+5. [ ] 引入分布式事务, 测试SAGA模式
+6. [ ] 引入分布式事务, 测试TCC模式
+7. [ ] 引入Dubbo, 替换feign
+8. [ ] 持久层使用Mybatis-Plus
 # 参考文档地址
 - 源码地址
 https://github.com/seata/seata
