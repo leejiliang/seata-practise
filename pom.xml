@@ -8,6 +8,9 @@
     <artifactId>seata-practise</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
+    <modules>
+        <module>uk-acct-api</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>

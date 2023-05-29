@@ -7,7 +7,7 @@ seata 学习项目
 4. [ ] 引入分布式事务, 测试XA模式
 5. [ ] 引入分布式事务, 测试SAGA模式
 6. [ ] 引入分布式事务, 测试TCC模式
-7. [ ] 引入Dubbo, 替换feign
+7. [X] ~~引入Dubbo, 替换feign~~, 原来spring cloud Dubbo 已经不在跟着spring cloud版本走了, 而是跟着spring boot版本走了, 有一种说法是, Dubbo自成一套微服务构建体系.
 8. [ ] 持久层使用Mybatis-Plus
 # 参考文档地址
 - 源码地址
