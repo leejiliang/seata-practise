@@ -31,8 +31,8 @@ https://github.com/leejiliang/seata-practise.git
 ![架构图](https://image-blog-lee.oss-cn-hangzhou.aliyuncs.com/uPic/g3sT6R.jpg)
 ## 核心配置, 包含Nacos, Seata
 [核心配置](https://github.com/leejiliang/seata-practise/blob/main/doc/reference/configuration.md)
-# 相关SQL
-
+# 相关SQL, AT模式下的undo_log, Seata Server sql
+[必看SQL](https://github.com/leejiliang/seata-practise/blob/main/doc/reference/%E5%BF%85%E5%A4%87SQL.md)
 
 # 组件版本
 1. [spring cloud version to spring boot](https://github.com/spring-cloud/spring-cloud-release/wiki/Supported-Versions)
