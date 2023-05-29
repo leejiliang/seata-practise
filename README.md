@@ -29,7 +29,8 @@ https://github.com/leejiliang/seata-practise.git
 ## 架构图
 ---
 ![架构图](https://image-blog-lee.oss-cn-hangzhou.aliyuncs.com/uPic/g3sT6R.jpg)
-
+## 核心配置, 包含Nacos, Seata
+[核心配置](https://github.com/leejiliang/seata-practise/blob/main/doc/reference/configuration.md)
 # 相关SQL
 ```sql
 ## 创建schema
