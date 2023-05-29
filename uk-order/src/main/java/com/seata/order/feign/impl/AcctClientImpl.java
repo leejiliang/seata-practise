@@ -19,7 +19,7 @@ public class AcctClientImpl implements AcctClient {
     }
 
     @Override
-    public Long pay(Long userId, BigDecimal amount) {
+    public Long pay(Long userId, BigDecimal amount, String xid) {
         throw new RuntimeException("支付异常");
     }
 }

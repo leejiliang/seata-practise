@@ -8,13 +8,11 @@ spring:
     password: 123456
     url: jdbc:mysql://localhost:3306/seata_uk?serverTimezone=Asia/Shanghai
   cloud:
-    consul:
+    nacos:
       discovery:
-        instance-id: ${spring.application.name}
-        health-check-interval: 5s
-        health-check-path: /my-health-check
-      host: localhost
-      port: 8500
+        server-addr: 127.0.0.1:8848
+  profiles:
+    active: seata
   jpa:
     hibernate:
       ddl-auto: update

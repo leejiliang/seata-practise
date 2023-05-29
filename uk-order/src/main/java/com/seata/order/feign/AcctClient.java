@@ -23,5 +23,6 @@ public interface AcctClient {
 
     @PutMapping(value = "/accounts")
     Long pay(@RequestParam(name = "userId") Long userId,
-             @RequestParam(name = "amount") BigDecimal amount);
+             @RequestParam(name = "amount") BigDecimal amount,
+             @RequestParam(name = "xid") String xid);
 }

@@ -1,0 +1,7 @@
+seata:
+  service:
+    vgroup-mapping:
+      uk: default
+    grouplist:
+      default: 127.0.0.1:8091
+  tx-service-group: uk

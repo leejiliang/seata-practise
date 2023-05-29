@@ -5,6 +5,8 @@ import com.seata.acct.entity.PayRecord;
 import com.seata.acct.entity.TAccount;
 import com.seata.acct.entity.repository.PayRecordRepository;
 import com.seata.acct.entity.repository.TAccountRepository;
+import io.seata.core.context.RootContext;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +25,10 @@ public class AccountService {
     }
 
     @Transactional
-    public Long pay(Long userId, BigDecimal amount) {
+    public Long pay(Long userId, BigDecimal amount, String xid) {
+        RootContext.bind(xid);
+        System.out.println(RootContext.inGlobalTransaction());
+        System.out.println(RootContext.getXID());
         return accountRepository.findByUserId(userId).map(account -> {
             if (amount.compareTo(account.getAmount()) > 0) {
                 throw new RuntimeException("余额不足");

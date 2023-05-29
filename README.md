@@ -1,5 +1,9 @@
 # seata-practise
 seata 学习项目
+# TODO list
+1. [ ] 替换服务发现组件为nacos
+2. [ ] 使用组件seata, 测试AT模式
+3. [ ] 引入分库分表, 测试AT模式
 # 参考文档地址
 - 源码地址
 https://github.com/seata/seata
@@ -32,3 +36,7 @@ create user uk@'%' identified by '123456';
 grant all on seata_uk.* to uk@'%' with grant option;
 flush privileges;
 ```
+
+# 组件版本
+1. [spring cloud version to spring boot](https://github.com/spring-cloud/spring-cloud-release/wiki/Supported-Versions)
+2. [spring cloud alibaba version to spring cloud](https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E)
