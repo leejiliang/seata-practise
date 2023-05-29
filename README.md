@@ -32,16 +32,7 @@ https://github.com/leejiliang/seata-practise.git
 ## 核心配置, 包含Nacos, Seata
 [核心配置](https://github.com/leejiliang/seata-practise/blob/main/doc/reference/configuration.md)
 # 相关SQL
-```sql
-## 创建schema
-create schema seata_uk default character set utf8 collate utf8_general_ci;
-## 创建用户
-DROP USER uk;
-create user uk@'%' identified by '123456';
-## 授权
-grant all on seata_uk.* to uk@'%' with grant option;
-flush privileges;
-```
+
 
 # 组件版本
 1. [spring cloud version to spring boot](https://github.com/spring-cloud/spring-cloud-release/wiki/Supported-Versions)
