@@ -6,48 +6,16 @@
 
     <groupId>com.seata</groupId>
     <artifactId>seata-practise</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>pom</packaging>
 
     <dependencyManagement>
         <dependencies>
 
             <dependency>
-                <groupId>com.seata.util</groupId>
-                <artifactId>uk-util</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.seata.order</groupId>
-                <artifactId>uk-order</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.seata.warehouse</groupId>
-                <artifactId>uk-warehouse</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.seata.acct</groupId>
-                <artifactId>uk-acct</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.7.12</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>2021.0.7</version>
+                <version>${spirng.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -61,7 +29,7 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.16</version>
+                <version>${mysql.version}</version>
             </dependency>
 
             <dependency>
@@ -83,12 +51,13 @@
     </dependencyManagement>
 
     <properties>
+        <spirng.boot.version>2.7.12</spirng.boot.version>
         <spinrg.alibaba.cloud-version>2021.0.5.0</spinrg.alibaba.cloud-version>
         <spring.cloud-version>2021.0.7</spring.cloud-version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <lombok.version>1.18.4</lombok.version>
+        <mysql.version>8.0.16</mysql.version>
     </properties>
 
     <build>
@@ -103,6 +72,15 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
         </plugins>
