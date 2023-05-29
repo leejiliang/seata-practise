@@ -1,6 +1,6 @@
 # seata-practise
 seata 学习项目
-# TODO list
+# TODO LIST
 1. [x] 替换服务发现组件为nacos
 2. [x] 使用组件seata, 测试AT模式
 3. [ ] 引入分库分表, 测试AT模式
