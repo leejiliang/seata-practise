@@ -8,7 +8,7 @@ seata 学习项目
 5. [ ] 引入分布式事务, 测试SAGA模式
 6. [ ] 引入分布式事务, 测试TCC模式
 7. [ ] 引入Dubbo, 替换feign
-8. [ ] 持久层使用Mybatis-Plus
+8. [x] 持久层使用Mybatis-Plus
 # 参考文档地址
 - 源码地址
 https://github.com/seata/seata
@@ -26,6 +26,12 @@ https://github.com/leejiliang/seata-practise.git
 - 帐户服务：从用户帐户中扣除余额。
 
 ---
+
+## order模块集成mybatis-plus
+order模块由jpa切换了mybatis-plus
+- 采用编码方式配置，代码见：com.seata.order.config.MybatisPlusConfig
+- 根据表结构反向生成entity见：
+
 ## 架构图
 ---
 ![架构图](https://image-blog-lee.oss-cn-hangzhou.aliyuncs.com/uPic/g3sT6R.jpg)
