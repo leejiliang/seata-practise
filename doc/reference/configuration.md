@@ -5,6 +5,9 @@
 sh startup.sh -m standalone
 sh ./seata-server.sh -p 8091 -h 127.0.0.1 -m file
 ```
+- 如果你想节省点时间, 你可以考虑将组件的启动命令封装在一个shell脚本里面, 然后注册到系统环境变量中, 这样你就可以在任何地方启动你的组件了.
+需要注意的是, 脚本中的启动命令本身使用的是绝对路径, 所以你需要根据自己的实际情况修改脚本中的启动命令.
+[示例脚本](https://github.com/leejiliang/seata-practise/blob/main/doc/reference/uk.sh)
 # Seata配置
 
 - seata 服务配置
