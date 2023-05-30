@@ -34,7 +34,7 @@ import java.util.List;
  * @description:
  */
 @Configuration
-@MapperScan(basePackages = "com.seata.order.mappers", sqlSessionFactoryRef = "sqlSessionFactory")
+@MapperScan(basePackages = "com.seata.order.mapper", sqlSessionFactoryRef = "sqlSessionFactory")
 public class MybatisPlusConfig {
 
     @Bean
