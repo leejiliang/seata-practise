@@ -9,6 +9,7 @@ seata 学习项目
 6. [ ] 引入分布式事务, 测试TCC模式
 7. [ ] 引入Dubbo, 替换feign
 8. [x] 持久层使用Mybatis-Plus
+9. [ ] 实现项目虚拟化, 使用docker-compose
 # 参考文档地址
 - 源码地址
 https://github.com/seata/seata
