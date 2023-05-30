@@ -30,7 +30,7 @@ https://github.com/leejiliang/seata-practise.git
 ## order模块集成mybatis-plus
 order模块由jpa切换了mybatis-plus
 - 采用编码方式配置，代码见：com.seata.order.config.MybatisPlusConfig
-- 根据表结构反向生成entity见：
+- 根据表结构反向生成entity见：com.seata.util.mybatis.MybatisCodeGenerator
 
 ## 架构图
 ---

@@ -42,7 +42,14 @@
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-generator</artifactId>
-                <version>3.3.0</version>
+                <version>3.5.3</version>
+            </dependency>
+
+            <!--mybatis-plus freemarker引擎模板-->
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>2.3.31</version>
             </dependency>
 
             <dependency>
