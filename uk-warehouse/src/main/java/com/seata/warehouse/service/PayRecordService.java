@@ -2,12 +2,15 @@ package com.seata.warehouse.service;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.seata.warehouse.entity.PayRecord;
 import com.seata.warehouse.mapper.PayRecordMapper;
 import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.concurrent.CompletableFuture;
 
 /**
  * @auther: jia.you
@@ -28,8 +31,13 @@ public class PayRecordService {
      */
     public void testTransaction(PayRecord payRecord1, PayRecord payRecord2){
         PayRecordService payRecordService = (PayRecordService) AopContext.currentProxy();
-        payRecordService.insertMaster1(payRecord1);
-        payRecordService.insertMaster2(payRecord2);
+        var f1 = CompletableFuture.runAsync(() -> payRecordService.insertMaster1(payRecord1));
+        var f2 = CompletableFuture.runAsync(() -> payRecordService.insertMaster2(payRecord2));
+        CompletableFuture.allOf(f1, f2).whenComplete((r, e) -> {
+            if(e != null){
+                throw new RuntimeException(e);
+            }
+        }).join();
     }
 
     @DS("master") // 随机master

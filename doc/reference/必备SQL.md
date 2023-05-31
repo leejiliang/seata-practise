@@ -3,6 +3,9 @@
 ```sql
 ## 创建schema
 create schema seata_uk default character set utf8 collate utf8_general_ci;
+create schema seata_uk2 default character set utf8 collate utf8_general_ci;
+create schema seata_uk_s1 default character set utf8 collate utf8_general_ci;
+create schema seata_uk_s2 default character set utf8 collate utf8_general_ci;
 ## 创建用户
 DROP USER uk;
 create user uk@'%' identified by '123456';
@@ -102,4 +105,40 @@ INSERT INTO `distributed_lock` (lock_key, lock_value, expire) VALUES ('AsyncComm
 INSERT INTO `distributed_lock` (lock_key, lock_value, expire) VALUES ('RetryCommitting', ' ', 0);
 INSERT INTO `distributed_lock` (lock_key, lock_value, expire) VALUES ('RetryRollbacking', ' ', 0);
 INSERT INTO `distributed_lock` (lock_key, lock_value, expire) VALUES ('TxTimeoutCheck', ' ', 0);
+```
+# 项目初始化必用SQL汇总
+## warehouse库
+```sql
+create table seata_uk.pay_record
+(
+    id         bigint auto_increment
+        primary key,
+    account_id bigint         null,
+    pay_amount decimal(19, 2) null,
+    pay_time   datetime(6)    null
+);
+create table seata_uk2.pay_record
+(
+    id         bigint auto_increment
+        primary key,
+    account_id bigint         null,
+    pay_amount decimal(19, 2) null,
+    pay_time   datetime(6)    null
+);
+create table seata_uk_s1.pay_record
+(
+    id         bigint auto_increment
+        primary key,
+    account_id bigint         null,
+    pay_amount decimal(19, 2) null,
+    pay_time   datetime(6)    null
+);
+create table seata_uk_s2.pay_record
+(
+    id         bigint auto_increment
+        primary key,
+    account_id bigint         null,
+    pay_amount decimal(19, 2) null,
+    pay_time   datetime(6)    null
+);
 ```

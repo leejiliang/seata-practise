@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
@@ -35,7 +36,7 @@ public class PayRecordMapperTest {
     @Test
     public void testInsert(){
         PayRecord payRecord = new PayRecord();
-        payRecord.setAccountId(Long.valueOf(1));
+        payRecord.setAccountId(1L);
         payRecord.setPayAmount(new BigDecimal(1));
         payRecord.setPayTime(LocalDateTime.now());
         payRecordService.insertRandom(payRecord);
