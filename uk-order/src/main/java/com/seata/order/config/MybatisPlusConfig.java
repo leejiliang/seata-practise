@@ -8,8 +8,10 @@ import com.baomidou.mybatisplus.core.config.GlobalConfig;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
+import io.seata.rm.datasource.DataSourceProxy;
 import org.apache.ibatis.logging.stdout.StdOutImpl;
 import org.apache.ibatis.plugin.Interceptor;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -37,16 +39,24 @@ import java.util.List;
 @MapperScan(basePackages = "com.seata.order.mapper", sqlSessionFactoryRef = "sqlSessionFactory")
 public class MybatisPlusConfig {
 
+    private DataSourceProxy dataSourceProxy;
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
         return new DruidDataSource();
     }
 
+
+    @Bean  // 注意：这里DataSourceProxy导的是seata的包
+    public DataSourceProxy dataSourceProxy(DataSource dataSource) {
+        dataSourceProxy = new DataSourceProxy(dataSource);
+        return dataSourceProxy;
+    }
+
     @Bean("sqlSessionFactory")
-    public MybatisSqlSessionFactoryBean sqlSessionFactory(DataSource dataSource){
+    public SqlSessionFactory sqlSessionFactory() throws Exception {
         MybatisSqlSessionFactoryBean sqlSessionFactoryBean = new MybatisSqlSessionFactoryBean();
-        sqlSessionFactoryBean.setDataSource(dataSource);
+        sqlSessionFactoryBean.setDataSource(dataSourceProxy);
         // mapper.xml别名映射
         sqlSessionFactoryBean.setTypeAliasesPackage("com.seata.order.entity");
         String[] mapperLocations = new String[1];
@@ -70,7 +80,7 @@ public class MybatisPlusConfig {
         globalConfig.setDbConfig(dbConfig);
         sqlSessionFactoryBean.setGlobalConfig(globalConfig);
 
-        return sqlSessionFactoryBean;
+        return sqlSessionFactoryBean.getObject();
     }
 
     @Bean(value = "transactionTemplate")
