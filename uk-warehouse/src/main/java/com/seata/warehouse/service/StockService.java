@@ -1,5 +1,6 @@
 package com.seata.warehouse.service;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.seata.warehouse.entity.Stock;
 import com.seata.warehouse.mapper.StockMapper;
@@ -21,6 +22,7 @@ public class StockService {
     private final StockMapper stockMapper;
 
     @Transactional
+    @DS("master")
     public void reduceStock(String commodityCode, int count, String xid) {
         RootContext.bind(xid);
         var stock = queryStock(commodityCode);
