@@ -1,6 +1,7 @@
 package com.seata.acct.service;
 
 import com.fasterxml.jackson.databind.introspect.DefaultAccessorNamingStrategy;
+import com.seata.acct.client.WareHouseClient;
 import com.seata.acct.entity.PayRecord;
 import com.seata.acct.entity.TAccount;
 import com.seata.acct.entity.repository.PayRecordRepository;
@@ -18,6 +19,7 @@ import java.math.BigDecimal;
 public class AccountService {
     private final TAccountRepository accountRepository;
     private final PayRecordRepository payRecordRepository;
+    private final WareHouseClient wareHouseClient;
 
     @Transactional
     public Long createAccount(TAccount account) {
@@ -29,6 +31,7 @@ public class AccountService {
         RootContext.bind(xid);
         System.out.println(RootContext.inGlobalTransaction());
         System.out.println(RootContext.getXID());
+        wareHouseClient.deduct("1001", 2, xid);
         return accountRepository.findByUserId(userId).map(account -> {
             if (amount.compareTo(account.getAmount()) > 0) {
                 throw new RuntimeException("余额不足");
