@@ -4,10 +4,13 @@ import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.seata.warehouse.entity.PayRecord;
 import com.seata.warehouse.mapper.PayRecordMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.concurrent.CompletableFuture;
 
 /**
  * @auther: jia.you
@@ -17,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 
 @Service
+@Slf4j
 public class PayRecordService {
 
     @Autowired
@@ -26,10 +30,18 @@ public class PayRecordService {
     /**
      * 这里演示的是未使用seata时，事务不生效。不能加@Transactional注解，会导致数据源无法切换
      */
+    @Transactional
     public void testTransaction(PayRecord payRecord1, PayRecord payRecord2){
         PayRecordService payRecordService = (PayRecordService) AopContext.currentProxy();
-        payRecordService.insertMaster1(payRecord1);
-        payRecordService.insertMaster2(payRecord2);
+//        payRecordService.insertMaster1(payRecord1);
+//        payRecordService.insertMaster2(payRecord2);
+        CompletableFuture.supplyAsync(() -> payRecordService.query1()).whenComplete((payRecord, e) -> {
+            log.info("查询s1：{}", payRecord.getAccountId());
+        });
+        CompletableFuture.supplyAsync(() -> payRecordService.query2()).whenComplete((payRecord, e) -> {
+            log.info("查询s1：{}", payRecord.getAccountId());
+        });
+
     }
 
     @DS("master") // 随机master
@@ -70,4 +82,6 @@ public class PayRecordService {
         wrapper.eq(PayRecord :: getId, 1);
         return payRecordMapper.selectOne(wrapper);
     }
+
+
 }
