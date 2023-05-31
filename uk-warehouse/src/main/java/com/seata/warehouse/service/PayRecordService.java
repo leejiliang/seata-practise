@@ -50,13 +50,13 @@ public class PayRecordService {
         payRecordMapper.insert(payRecord);
     }
 
-    @DS("master_1")
+    @DS("master1")
     @Transactional
     public void insertMaster1(PayRecord payRecord){
         payRecordMapper.insert(payRecord);
     }
 
-    @DS("master_2")
+    @DS("master2")
     @Transactional
     public void insertMaster2(PayRecord payRecord){
         payRecordMapper.insert(payRecord);
@@ -69,7 +69,7 @@ public class PayRecordService {
         return payRecordMapper.selectOne(wrapper);
     }
 
-    @DS("slave_1")
+    @DS("slave1")
     public PayRecord query1(){
         LambdaQueryWrapper<PayRecord> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(PayRecord :: getId, 1);

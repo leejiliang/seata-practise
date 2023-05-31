@@ -1,5 +1,6 @@
 package com.seata.warehouse;
 
+import com.seata.warehouse.config.MultiDataSourceProperties;
 import com.seata.warehouse.entity.PayRecord;
 import com.seata.warehouse.service.PayRecordService;
 import lombok.extern.slf4j.Slf4j;
@@ -7,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
@@ -27,6 +27,8 @@ public class PayRecordServiceTest {
 
     @Autowired
     private PayRecordService payRecordService;
+    @Autowired
+    private MultiDataSourceProperties dataSourceConfiguration;
 
     @Test
     public void testInsert(){
