@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@SpringBootApplication(exclude = SeataFeignClientAutoConfiguration.class)
+@SpringBootApplication
 @RestController
 @EnableDiscoveryClient
 @EnableFeignClients
