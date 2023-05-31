@@ -23,7 +23,7 @@ spring:
         testWhileIdle: true
         testOnBorrow: false
         testOnReturn: false
-      primary: master # 设置默认的数据源或者数据源组,默认值即为master，当有多个master时会随机master
+      primary: master # 设置默认的数据源或者数据源组,默认值即为master。当有多个master_{}时会随机master。也可以指定固定的某个master
       strict: false # 严格匹配数据源,默认false. true未匹配到指定数据源时抛异常,false使用默认数据源
       datasource:
         master_1:

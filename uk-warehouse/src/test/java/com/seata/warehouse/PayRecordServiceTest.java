@@ -1,10 +1,6 @@
 package com.seata.warehouse;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.seata.warehouse.entity.PayRecord;
-import com.seata.warehouse.mapper.PayRecordMapper;
 import com.seata.warehouse.service.PayRecordService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -16,7 +12,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 /**
  * @auther: jia.you
@@ -28,7 +23,7 @@ import java.util.UUID;
 @SpringBootTest(classes = UkWarehouseApplication.class)
 @RunWith(SpringRunner.class)
 @Slf4j
-public class PayRecordMapperTest {
+public class PayRecordServiceTest {
 
     @Autowired
     private PayRecordService payRecordService;
