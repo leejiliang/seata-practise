@@ -44,4 +44,3 @@ order模块由jpa切换了mybatis-plus
 # 组件版本
 1. [spring cloud version to spring boot](https://github.com/spring-cloud/spring-cloud-release/wiki/Supported-Versions)
 2. [spring cloud alibaba version to spring cloud](https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E)
-

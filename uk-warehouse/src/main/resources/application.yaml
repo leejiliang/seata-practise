@@ -3,10 +3,6 @@ server:
 spring:
   application:
     name: uk-warehouse
-  datasource:
-    username: uk
-    password: 123456
-    url: jdbc:mysql://localhost:3307/seata_uk?serverTimezone=Asia/Shanghai
   cloud:
 #    consul:
 #      discovery:
@@ -18,6 +14,8 @@ spring:
       nacos:
         discovery:
           server-addr: 127.0.0.1:8848
-  jpa:
-    hibernate:
-      ddl-auto: update
+  profiles:
+    active: dev
+    group:
+      dev: dev-jdbc,dev-seata
+      prod: prod-jdbc,prod-seata

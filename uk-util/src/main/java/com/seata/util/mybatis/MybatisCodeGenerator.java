@@ -51,10 +51,10 @@ public class MybatisCodeGenerator {
     //基本信息
     String author = "";    //作者
     String parent = "com.seata";   //父包名
-    String module = "order";   //模块包名
+    String module = "warehouse";   //模块包名
 
     public static void main(String[] args) {
-        new MybatisCodeGenerator().createEntity("uk-order", List.of("t_account"));
+        new MybatisCodeGenerator().createEntity("uk-warehouse", List.of("pay_record"));
     }
 
     /**
@@ -126,7 +126,7 @@ public class MybatisCodeGenerator {
                             .enableBaseColumnList() //启用 BaseColumnList
                             .formatMapperFileName("%sMapper")   //格式化 mapper 文件名称
 //                            .enableMapperAnnotation()       //开启 @Mapper 注解
-                            .formatXmlFileName("%sXml") //格式化Xml文件名称
+                            .formatXmlFileName("%sMapper") //格式化Xml文件名称
                             .formatMapperFileName("%sMapper");   //格式化Mapper文件名称
                 })
                 //5、模板
