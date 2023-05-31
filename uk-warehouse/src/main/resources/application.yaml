@@ -6,7 +6,9 @@ spring:
   datasource:
     username: uk
     password: 123456
-    url: jdbc:mysql://localhost:3307/seata_uk?serverTimezone=Asia/Shanghai
+    host: localhost
+    port: 3307
+    url: jdbc:mysql://${spring.datasource.host}:${spring.datasource.port}/seata_uk?serverTimezone=Asia/Shanghai
   cloud:
 #    consul:
 #      discovery:
