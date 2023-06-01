@@ -190,6 +190,7 @@ public class Demo {
 
 #### 2.1 添加seata依赖
 ```xml
+<!-- boot仅适用于单应用多库事务，如果是多服务请使用 spring-cloud-starter-alibaba-seata依赖 -->
  <dependency>
    <groupId>io.seata</groupId>
    <artifactId>seata-spring-boot-starter</artifactId>
