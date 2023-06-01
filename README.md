@@ -27,6 +27,8 @@ https://github.com/leejiliang/seata-practise.git
 - 帐户服务：从用户帐户中扣除余额。
 
 ---
+## 快速集成SEATA
+[快速集成SEATA](https://github.com/leejiliang/seata-practise/blob/main/doc/reference/seata-help.md)
 
 ## order模块集成mybatis-plus
 order模块由jpa切换了mybatis-plus
