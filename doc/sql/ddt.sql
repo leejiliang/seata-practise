@@ -10,3 +10,32 @@ CREATE TABLE `t_order` (
     `user_id` bigint DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table seata_uk.stock
+(
+    id         bigint auto_increment primary key,
+    commodity_code varchar(255) null,
+    count integer null,
+    last_update_time   datetime(6)    null
+);
+create table seata_uk2.stock
+(
+    id         bigint auto_increment primary key,
+    commodity_code varchar(255) null,
+    count integer null,
+    last_update_time   datetime(6)    null
+);
+create table seata_uk_s1.stock
+(
+    id         bigint auto_increment primary key,
+    commodity_code varchar(255) null,
+    count integer null,
+    last_update_time   datetime(6)    null
+);
+create table seata_uk_s2.stock
+(
+    id         bigint auto_increment primary key,
+    commodity_code varchar(255) null,
+    count integer null,
+    last_update_time   datetime(6)    null
+);
