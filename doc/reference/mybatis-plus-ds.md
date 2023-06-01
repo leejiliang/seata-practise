@@ -185,3 +185,69 @@ public class Demo {
    `@Transactional(propagation = Propagation.NOT_SUPPORTED)`
 2. 异步执行对应的方法
 3. [网络参考链接](https://blog.51cto.com/u_15501718/5103320)
+
+### 二、 mybatis-plus-ds集成seata分布式事务
+
+#### 2.1 添加seata依赖
+```xml
+ <dependency>
+   <groupId>io.seata</groupId>
+   <artifactId>seata-spring-boot-starter</artifactId>
+</dependency>       
+```
+
+##### 2.2 添加seata配置（AT模式）
+```yml
+spring:
+  datasource:
+     dynamic:
+        seata: true
+        seata-mode: at
+
+```
+```yml
+# seata分组配置，仅供参考
+seata:
+  service:
+    vgroup-mapping:
+      default_tx_group: default
+    grouplist:
+      default: 127.0.0.1:8091
+  tx-service-group: default_tx_group
+  registry:
+    nacos:
+      server-addr: localhost:8848
+      application: seata-server
+      group: SEATA_GROUP
+# 是否自动开启数据源代理，若自己手动配置DataSourceProxy需设置false
+#  enable-auto-data-source-proxy: false
+```
+##### 2.3 测试验证
+```java
+@Service
+public class PayRecordService {
+
+   @Autowired
+   private PayRecordMapper payRecordMapper;
+
+   @GlobalTransactional
+   public void seateInsert(PayRecord payRecord1, PayRecord payRecord2){
+      PayRecordService payRecordService = (PayRecordService) AopContext.currentProxy();
+      payRecordService.insertMaster1(payRecord1);
+      int i = 1/0;
+      payRecordService.insertMaster1(payRecord2);
+   }
+
+   @DS("master1")
+   @Transactional
+   public void insertMaster1(PayRecord payRecord){
+      payRecordMapper.insert(payRecord);
+   }
+
+   @DS("master2")
+   @Transactional
+   public void insertMaster2(PayRecord payRecord){
+      payRecordMapper.insert(payRecord);
+   }
+}
+```
