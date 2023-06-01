@@ -24,7 +24,7 @@ public class StockService {
     @Transactional
     @DS("master")
     public void reduceStock(String commodityCode, int count, String xid) {
-        RootContext.bind(xid);
+//        RootContext.bind(xid);
         var stock = queryStock(commodityCode);
         stock.setCount(stock.getCount() - count);
         stock.updateById();

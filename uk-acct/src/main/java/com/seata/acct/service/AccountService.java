@@ -28,7 +28,7 @@ public class AccountService {
 
     @Transactional
     public Long pay(Long userId, BigDecimal amount, String xid) {
-        RootContext.bind(xid);
+//        RootContext.bind(xid);
         System.out.println(RootContext.inGlobalTransaction());
         System.out.println(RootContext.getXID());
         wareHouseClient.deduct("1001", 2, xid);
