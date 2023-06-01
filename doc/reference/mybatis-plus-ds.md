@@ -239,13 +239,13 @@ public class PayRecordService {
       payRecordService.insertMaster1(payRecord2);
    }
 
-   @DS("master1")
+   @DS("master_1")
    @Transactional
    public void insertMaster1(PayRecord payRecord){
       payRecordMapper.insert(payRecord);
    }
 
-   @DS("master2")
+   @DS("master_2")
    @Transactional
    public void insertMaster2(PayRecord payRecord){
       payRecordMapper.insert(payRecord);

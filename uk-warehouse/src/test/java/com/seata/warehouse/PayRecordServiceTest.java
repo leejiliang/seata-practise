@@ -1,6 +1,5 @@
 package com.seata.warehouse;
 
-import com.seata.warehouse.config.MultiDataSourceProperties;
 import com.seata.warehouse.entity.PayRecord;
 import com.seata.warehouse.service.PayRecordService;
 import lombok.extern.slf4j.Slf4j;
@@ -27,8 +26,6 @@ public class PayRecordServiceTest {
 
     @Autowired
     private PayRecordService payRecordService;
-    @Autowired
-    private MultiDataSourceProperties dataSourceConfiguration;
 
     @Test
     public void testInsert(){
@@ -49,20 +46,19 @@ public class PayRecordServiceTest {
     }
 
     /**
-     * 这里演示的是未使用seata时，事务不生效
+     * 这里演示的是使用seata分布式事务
      */
     @Test
-    public void testTransaction(){
+    public void testSeata(){
         PayRecord payRecord1 = new PayRecord();
-        payRecord1.setAccountId(Long.valueOf(2));
-        payRecord1.setPayAmount(new BigDecimal(2));
+        payRecord1.setAccountId(Long.valueOf(1));
+        payRecord1.setPayAmount(new BigDecimal(1));
         payRecord1.setPayTime(LocalDateTime.now());
 
         PayRecord payRecord2 = new PayRecord();
-        payRecord2.setAccountId(Long.valueOf(3));
-        payRecord2.setPayAmount(new BigDecimal(3));
+        payRecord2.setAccountId(Long.valueOf(2));
+        payRecord2.setPayAmount(new BigDecimal(2));
         payRecord2.setPayTime(LocalDateTime.now());
-        payRecordService.testTransaction(payRecord1, payRecord2);
+        payRecordService.insertSeata(payRecord1, payRecord2, 1);
     }
-
 }

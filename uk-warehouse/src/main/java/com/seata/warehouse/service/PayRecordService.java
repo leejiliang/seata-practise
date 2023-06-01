@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.seata.warehouse.entity.PayRecord;
 import com.seata.warehouse.mapper.PayRecordMapper;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.framework.AopContext;
@@ -29,19 +30,12 @@ public class PayRecordService {
     private PayRecordMapper payRecordMapper;
 
 
-    /**
-     * 这里演示的是未使用seata时，事务不生效。不能加@Transactional注解，会导致数据源无法切换
-     */
-    @Transactional
-    @SneakyThrows
-    public void testTransaction(PayRecord payRecord1, PayRecord payRecord2){
+    @GlobalTransactional
+    public void insertSeata(PayRecord payRecord1, PayRecord payRecord2, int num){
         PayRecordService payRecordService = (PayRecordService) AopContext.currentProxy();
-//        payRecordService.insertMaster1(payRecord1);
-//        payRecordService.insertMaster2(payRecord2);
-        CompletableFuture<Void> future1 = CompletableFuture.runAsync(() -> log.info("查询s1结果：" + payRecordService.query1().getAccountId()));
-        CompletableFuture<Void> future2 = CompletableFuture.runAsync(() -> log.info("查询s2结果：" + payRecordService.query2().getAccountId()));
-
-        CompletableFuture.allOf(future1, future2).join();
+        payRecordService.insertMaster1(payRecord1);
+        payRecordService.insertMaster2(payRecord2);
+        int i = 1 / num;
     }
 
     @DS("master") // 随机master
@@ -50,13 +44,13 @@ public class PayRecordService {
         payRecordMapper.insert(payRecord);
     }
 
-    @DS("master1")
+    @DS("master_1")
     @Transactional
     public void insertMaster1(PayRecord payRecord){
         payRecordMapper.insert(payRecord);
     }
 
-    @DS("master2")
+    @DS("master_2")
     @Transactional
     public void insertMaster2(PayRecord payRecord){
         payRecordMapper.insert(payRecord);
@@ -69,7 +63,7 @@ public class PayRecordService {
         return payRecordMapper.selectOne(wrapper);
     }
 
-    @DS("slave1")
+    @DS("slave_1")
     public PayRecord query1(){
         LambdaQueryWrapper<PayRecord> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(PayRecord :: getId, 1);

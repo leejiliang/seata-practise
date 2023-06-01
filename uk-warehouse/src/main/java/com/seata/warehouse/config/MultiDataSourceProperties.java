@@ -7,8 +7,9 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @Description TODO
  */
-@Configuration
+//@Configuration
 @Data
+@Deprecated
 public class MultiDataSourceProperties {
     @Value("${spring.datasource.dynamic.datasource.master_1.url}")
     private String m1Url;
