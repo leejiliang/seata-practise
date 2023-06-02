@@ -10,4 +10,5 @@ seata:
       server-addr: localhost:8848
       application: seata-server
       group: SEATA_GROUP
+  data-source-proxy-mode: XA
 #  enable-auto-data-source-proxy: false # 手动配置DataSourceProxy时需要禁用

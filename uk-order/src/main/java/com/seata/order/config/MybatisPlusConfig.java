@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import io.seata.rm.datasource.DataSourceProxy;
+import io.seata.rm.datasource.xa.DataSourceProxyXA;
 import org.apache.ibatis.logging.stdout.StdOutImpl;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -39,7 +40,7 @@ import java.util.List;
 @MapperScan(basePackages = "com.seata.order.mapper", sqlSessionFactoryRef = "sqlSessionFactory")
 public class MybatisPlusConfig {
 
-    private DataSourceProxy dataSourceProxy;
+    private DataSourceProxyXA dataSourceProxy;
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
@@ -48,8 +49,8 @@ public class MybatisPlusConfig {
 
 
     @Bean  // 注意：这里DataSourceProxy导的是seata的包
-    public DataSourceProxy dataSourceProxy(DataSource dataSource) {
-        dataSourceProxy = new DataSourceProxy(dataSource);
+    public DataSourceProxyXA dataSourceProxy(DataSource dataSource) {
+        dataSourceProxy = new DataSourceProxyXA(dataSource);
         return dataSourceProxy;
     }
 

@@ -2,6 +2,7 @@ package com.seata.order.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.seata.order.entity.TOrder;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * @auther: jia.you
@@ -9,5 +10,6 @@ import com.seata.order.entity.TOrder;
  * @version 1.0
  * @description:
  */
+@Mapper
 public interface OrderMapper extends BaseMapper<TOrder> {
 }
