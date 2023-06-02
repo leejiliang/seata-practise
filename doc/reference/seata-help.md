@@ -22,6 +22,14 @@ seata:
       application: seata-server
       group: SEATA_GROUP 
 ```
+### 注意点：TM（事务管理器）如何通过nacos注册中心定位TC（事务协调者）服务
+- 通过server-addr+namespace+vgroup-mapping.{cluster}来定位seata-server服务集群
+- 获取事务分组(服务启动时加载配置) spring/springboot可配置在yml、properties中，对应值"default_tx_group"即为事务分组名，可以自定义
+- 查找TC集群名 拿到事务分组名"default_tx_group"拼接成"service.vgroupMapping.default_tx_group"从配置中心查找到TC集群名clusterName为"default"
+- 查找TC服务 根据serverAddr和namespace以及clusterName在注册中心找到真实TC服务列表
+- 注：serverAddr和namespace与Server端一致，clusterName与Server端cluster一致
+- seata官方解释链接（文档结尾处）<https://seata.io/zh-cn/docs/user/txgroup/transaction-group.html>
+
 ## 编写代码
 在需要开启分布式事务的方法上添加@GlobalTransactional注解
 ```java
