@@ -1,13 +1,35 @@
+## file 配置形式
+#seata:
+#  service:
+#    vgroup-mapping:
+#      default_tx_group: uk
+#    grouplist:
+#      uk: 127.0.0.1:8091
+#  tx-service-group: default_tx_group
+#  registry:
+#    type: file
+#  config:
+#    type: file
+#  data-source-proxy-mode: XA
+## nacos配置形式
+spring:
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: uk-group
 seata:
-  service:
-    vgroup-mapping:
-      default_tx_group: default
-    grouplist:
-      default: 127.0.0.1:8091
-  tx-service-group: default_tx_group
+#  tx-service-group: uk-group ## 妈了个逼, 如果你按照这个方式来配置, 会一直报错: can not get cluster name,
+# cloud环境就的事务分组配置是通过: spring.cloud.alibaba.seata.tx-service-group 来配置的. 虽然提示是过期的, 推荐你用这个方式来指定分组, 但是事实根本就是不行. 操你妈了个逼的. 浪费老子一个多小时在这里排查, 还是要感谢腾讯大佬:
+# https://cloud.tencent.com/developer/article/2226331
   registry:
     nacos:
       server-addr: localhost:8848
       application: seata-server
+      group: SEATA_GROUP
+  config:
+    nacos:
+      server-addr: localhost:8848
+      namespace: "" # 默认public
+      data-id: uk-config
       group: SEATA_GROUP
   data-source-proxy-mode: XA
