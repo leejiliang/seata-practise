@@ -59,6 +59,6 @@ public class PayRecordServiceTest {
         payRecord2.setAccountId(Long.valueOf(2));
         payRecord2.setPayAmount(new BigDecimal(2));
         payRecord2.setPayTime(LocalDateTime.now());
-        payRecordService.insertSeata(payRecord1, payRecord2, 1);
+        payRecordService.insertSeata(payRecord1, payRecord2, 0);
     }
 }

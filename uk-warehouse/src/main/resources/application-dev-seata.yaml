@@ -1,14 +1,21 @@
 seata:
-  service:
-    vgroup-mapping:
-      default_tx_group: default
-    grouplist:
-      default: 127.0.0.1:8091
+#  service:
+#    vgroup-mapping:
+#      default_tx_group: default
+#    grouplist:
+#      default: 127.0.0.1:8091
   tx-service-group: default_tx_group
   registry:
+    type: nacos
     nacos:
       server-addr: localhost:8848
       application: seata-server
       group: SEATA_GROUP
-  data-source-proxy-mode: XA
+  config:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      group: "DEFAULT_GROUP"
+      data-id: uk-seata-client
+  data-source-proxy-mode: AT
 #  enable-auto-data-source-proxy: false # 手动配置DataSourceProxy时需要禁用
