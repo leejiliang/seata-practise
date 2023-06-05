@@ -1,5 +1,5 @@
 seata:
-#  service:
+#  service: # vgroup-mapping、grouplist只有当file模式才需要配置。nacos模式会从配置中心读取service.vgroupMapping.${tx-service-group}的值
 #    vgroup-mapping:
 #      default_tx_group: default
 #    grouplist:
