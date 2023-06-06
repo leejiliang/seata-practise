@@ -1,10 +1,11 @@
 package com.seata.order.feign;
 
 import com.seata.order.feign.impl.AcctClientImpl;
-import com.seata.order.feign.impl.WarehouseClientImpl;
+import io.seata.core.context.RootContext;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
@@ -24,5 +25,5 @@ public interface AcctClient {
     @PutMapping(value = "/accounts")
     Long pay(@RequestParam(name = "userId") Long userId,
              @RequestParam(name = "amount") BigDecimal amount,
-             @RequestParam(name = "xid") String xid);
+             @RequestHeader(RootContext.KEY_XID) String xid);
 }

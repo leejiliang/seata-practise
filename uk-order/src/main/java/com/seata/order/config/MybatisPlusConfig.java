@@ -40,7 +40,7 @@ import java.util.List;
 @MapperScan(basePackages = "com.seata.order.mapper", sqlSessionFactoryRef = "sqlSessionFactory")
 public class MybatisPlusConfig {
 
-    private DataSourceProxyXA dataSourceProxy;
+    private DataSourceProxy dataSourceProxy;
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
@@ -49,8 +49,8 @@ public class MybatisPlusConfig {
 
 
     @Bean  // 注意：这里DataSourceProxy导的是seata的包
-    public DataSourceProxyXA dataSourceProxy(DataSource dataSource) {
-        dataSourceProxy = new DataSourceProxyXA(dataSource);
+    public DataSourceProxy dataSourceProxy(DataSource dataSource) {
+        dataSourceProxy = new DataSourceProxy(dataSource);
         return dataSourceProxy;
     }
 

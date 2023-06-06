@@ -28,12 +28,10 @@ public class OrderService {
     public Long createOrder(TOrder order) {
         var xid = RootContext.getXID();
         try {
-            Long payRecordId = acctClient.pay(order.getUserId(), order.getAmount(), "111");
+            System.out.println("order是否在全局事务中："  + RootContext.inGlobalTransaction());
+            Long payRecordId = acctClient.pay(order.getUserId(), order.getAmount(), xid);
             order.setPayRecordId(payRecordId);
-//            TOrder tOrder = orderRepository.save(order);
-//            orderMapper.insert(order);
-//            var orderService = (OrderService) AopContext.currentProxy();
-//            orderService.saveOrder(order);
+            orderMapper.insert(order);
             int i = 1 / 0;
             return 0l;
         } catch (Exception e) {
