@@ -32,7 +32,8 @@ public class OrderService {
             Long payRecordId = acctClient.pay(order.getUserId(), order.getAmount(), xid);
             order.setPayRecordId(payRecordId);
             orderMapper.insert(order);
-            int i = 1 / 0;
+            // 手动回滚全局事务
+            GlobalTransactionContext.reload(xid).rollback();
             return 0l;
         } catch (Exception e) {
 //            GlobalTransactionContext.reload(xid).rollback();

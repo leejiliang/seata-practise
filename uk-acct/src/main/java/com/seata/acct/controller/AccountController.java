@@ -18,7 +18,7 @@ public class AccountController {
     @PutMapping
     public Long pay(@RequestParam Long userId,
                     @RequestParam BigDecimal amount,
-                    @RequestParam(name = "xid") String xid) {
+                    @RequestParam(name = "xid", required = false) String xid) {
         return accountService.pay(userId, amount, xid);
     }
 }
