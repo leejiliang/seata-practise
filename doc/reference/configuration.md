@@ -75,3 +75,24 @@ seata:
       urls: /,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.ico,/console-fe/public/**,/api/v1/auth/login
 ```
 # Nacos配置
+
+# feign配置说明
+该项目使用了spring-cloud 2021.0.7版本，cloud在2021版本移除了对hystrix的支持。故默认使用openfeign时，在未引入熔断器时，fallback是不生效的
+
+可以通过引入熔断器，然后开启feign熔断支持来生效服务降级。这里使用circuitbreaker-resilience4j熔断器模拟（uk-order项目引入）
+
+同时记得yml中开启feign对circuitbreaker熔断器的降级支持
+```yml
+feign:
+  circuitbreaker:
+    enabled: true
+```
+```xml
+<!-- 依赖引入 -->
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
+</dependency>
+```
+
+

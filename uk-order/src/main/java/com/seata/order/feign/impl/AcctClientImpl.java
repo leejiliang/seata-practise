@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * @version 1.0
  * @description:
  */
-
+@Component
 public class AcctClientImpl implements AcctClient {
     @Override
     public String index() {

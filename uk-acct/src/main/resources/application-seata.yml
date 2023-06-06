@@ -10,4 +10,5 @@ seata:
       server-addr: localhost:8848
       application: seata-server
       group: SEATA_GROUP
-  data-source-proxy-mode: XA
+    type: nacos
+  data-source-proxy-mode: AT

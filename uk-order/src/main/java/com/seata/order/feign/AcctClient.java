@@ -16,7 +16,7 @@ import java.math.BigDecimal;
  * @description:
  */
 
-@FeignClient(name = "uk-acct")
+@FeignClient(name = "uk-acct", fallback = AcctClientImpl.class)
 public interface AcctClient {
     @GetMapping(value = "/my-health-check")
     String index();

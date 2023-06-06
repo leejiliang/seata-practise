@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @version 1.0
  * @description:
  */
-
+@Component
 public class WarehouseClientImpl implements WarehouseClient {
     @Override
     public String index() {
